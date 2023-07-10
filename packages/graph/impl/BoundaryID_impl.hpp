@@ -20,7 +20,7 @@ inline constexpr BoundaryID::BoundaryID() noexcept
 inline constexpr BoundaryID::BoundaryID(unsigned dimension, bool direction)
     : _id((1u << ++dimension) + direction)
 {
-    #ifdef CIE_ENABLE_OUT_OF_RANGE_TESTS
+    #ifdef CIE_ENABLE_OUT_OF_RANGE_CHECKS
     if (CHAR_BIT * sizeof(unsigned) <= dimension || dimension == 0) {
         throw std::invalid_argument("Input dimension out of range");
     }
