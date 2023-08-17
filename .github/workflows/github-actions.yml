@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sanitizer: [ADDRESS, THREAD, UB]
+        sanitizer: [address, thread, undefined]
     runs-on: ubuntu-latest
     steps:
       - name: Create python venv
@@ -35,22 +35,26 @@ jobs:
       - name: Install packages
         run: |
           sudo apt install libopenmpi-dev catch2
-          sudo xargs apt install < cieutils/dependencies_ubuntu.txt
-          sudo xargs apt install < linalg/dependencies_ubuntu.txt
+           for lib in "cieutils" "linalg" "geo" "fem"; do
+            if [ -f "$lib/dependencies_ubuntu.txt" ]; then
+              sudo xargs apt install < $lib/dependencies_ubuntu.txt
+            fi
+          done
       - name: Build dependencies
         # OpenMPI is leaking all over the place (according to ASAN), so disable it for now
-        #run: ./build.sh -t Debug -o "-CIEUTILS_ENABLE_${{ matrix.sanitizer }}_SANITIZER=ON" -o "-DCIEUTILS_ENABLE_MPI=ON"
+        #run: ./build.sh -t Debug -o "-DCMAKE_CXX_FLAGS=-fsanitize=${{ matrix.sanitizer }}" -o "-DCIEUTILS_ENABLE_MPI=ON"
         run: |
           source penv/bin/activate
           for lib in "cieutils" "linalg" "geo"; do
-            ./$lib/build.sh -t Debug -o "-DCMAKE_CXX_FLAGS=-fsanitize={{ matrix.sanitizer }}"
+            libUpper=$(echo "$lib" | tr a-z A-Z)
+            ./$lib/build.sh -t Debug -o "-DCMAKE_CXX_FLAGS=-fsanitize={{ matrix.sanitizer }}" -o "-D${libUpper}_BUILD_TESTS:BOOL=OFF"
           done
       - name: Build
         run: |
           source penv/bin/activate
-          ./geo/build.sh -t Debug -o "-DLINALG_ENABLE_${{ matrix.sanitizer }}_SANITIZER=ON"
+          ./fem/build.sh -t Debug -o "-DCMAKE_CXX_FLAGS=-fsanitize=${{ matrix.sanitizer }}"
       - name: Run tests
-        run: ./geo/build/bin/geo_testrunner
+        run: ./fem/build/bin/fem_testrunner
 
   generate-docs:
     needs: testrunner
@@ -60,20 +64,23 @@ jobs:
         run: sudo apt install findutils doxygen graphviz
       - name: Clone dependencies
         run: |
-          git clone https://github.com/kelofm/cieutils.git --depth 1
-          git clone https://github.com/kelofm/linalg.git --depth 1
-          git clone https://github.com/kelofm/geo.git --depth 1
+          for lib in "cieutils" "linalg" "geo" "fem"; do
+            git clone https://github.com/kelofm/${lib}.git --depth 1
+          done
       - name: Generate docs for dependencies
         run: |
           cd cieutils/docs
+          TAGFILES=""
           doxygen doxyfile
           cd ../../linalg/docs
-          doxygen doxyfile
-          cd  ../../geo/docs
-          doxygen doxyfile
+          TAGFILES="$TAGFILES ../../cieutils/docs/cieutils_doxygen_tagfile=../../../cieutils/docs/html"
+          ( cat doxyfile ; echo "TAGFILES=$TAGFILES" ) | doxygen -
+          cd ../../geo/docs
+          TAGFILES="$TAGFILES ../../linalg/docs/linalg_doxygen_tagfile=../../../linalg/docs/html"
+          ( cat doxyfile ; echo "TAGFILES=$TAGFILES" ) | doxygen -
       - name: Update doc branch with current master
         run: |
-          cd geo
+          cd fem
           git config --local user.name $USER_NAME
           git config --local user.email "in@valid.email"
           git branch -D doc &>/dev/null || true
@@ -82,20 +89,22 @@ jobs:
           USER_NAME: matekelemen
       - name: Generate docs
         run: |
-          cd geo/docs
-          TAGFILES="../../cieutils/docs/cieutils_doxygen_tagfile"
-          TAGFILES="$TAGFILES:../../linalg/docs/linalg_doxygen_tagfile"
+          cd fem/docs
+          TAGFILES=""
+          for lib in "cieutils" "linalg" "fem"; do
+            TAGFILES="$TAGFILES ../../$lib/docs/${lib}_doxygen_tagfile=../../../$lib/docs/html"
+          done
           ( cat doxyfile ; echo "TAGFILES=$TAGFILES" ) | doxygen -
       - name: Generate root index.html
         run: |
-          cd geo
+          cd fem
           echo "<meta http-equiv=\"refresh\" content=\"0; docs/html/index.html\">" > index.html
       - name: Update remote
         run: |
-          cd geo
+          cd fem
           git add index.html docs/html -f
           git commit -m "update docs"
-          git push -f https://$USER_NAME:$GITHUB_TOKEN@github.com/kelofm/geo.git doc
+          git push -f https://$USER_NAME:$GITHUB_TOKEN@github.com/kelofm/fem.git doc
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           USER_NAME: matekelemen
