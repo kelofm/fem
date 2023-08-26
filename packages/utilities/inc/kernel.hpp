@@ -14,8 +14,6 @@
 #include "packages/matrix/inc/StaticEigenMatrix.hpp"
 #include "packages/matrix/inc/DynamicEigenMatrix.hpp"
 #include "packages/matrix/inc/SparseEigenMatrix.hpp"
-#include "packages/vector/inc/EigenArray.hpp"
-#include "packages/vector/inc/EigenVector.hpp"
 
 // --- STL Includes ---
 #include <array>
@@ -31,7 +29,7 @@ namespace cie::fem {
 namespace detail {
 
 template <Size Dimension, concepts::Numeric NT>
-using Point = linalg::EigenArray<NT,Dimension>;
+using Point = linalg::StaticEigenMatrix<NT,Dimension,1>;
 
 struct LocalPointTag {};
 
@@ -51,10 +49,10 @@ struct Kernel
 {
     static const Size dimension = Dimension;
     using number_type           = NT;
-    using dynamic_array         = linalg::EigenVector<NT>;
+    using dynamic_array         = linalg::EigenMatrix<Eigen::Matrix<NT,Eigen::Dynamic,1>>;
 
     template <Size ArraySize>
-    using static_array          = linalg::EigenArray<NT,ArraySize>;
+    using static_array          = linalg::StaticEigenMatrix<NT,ArraySize,1>;
 
     using Point                 = detail::Point<Dimension,NT>;
     using LocalPoint            = detail::LocalPoint<Dimension,NT>;
@@ -63,6 +61,7 @@ struct Kernel
     struct dense
     {
         using dynamic_matrix = linalg::DynamicEigenMatrix<NT>;
+
         template <Size RowSize, Size ColumnSize>
         using static_matrix = linalg::StaticEigenMatrix<NT,RowSize,ColumnSize>;
     };

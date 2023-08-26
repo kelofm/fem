@@ -36,19 +36,19 @@ CIE_TEST_CASE("AffineTransform", "[maths]")
         using Point = Kernel<2,double>::Point;
 
         std::vector<Point> locals {
-            {-1,-1},
-            { 1,-1},
-            {-1, 1},
+            {-1.0,-1.0},
+            { 1.0,-1.0},
+            {-1.0, 1.0},
 
-            { 1, 1}
+            { 1.0, 1.0}
         };
 
         std::vector<Point> transformed {
-            { 4, 1},
-            { 4, 3},
-            { 2, 1},
+            { 4.0, 1.0},
+            { 4.0, 3.0},
+            { 2.0, 1.0},
 
-            { 2, 3}
+            { 2.0, 3.0}
         };
 
         Transform transform;
