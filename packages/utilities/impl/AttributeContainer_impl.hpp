@@ -3,7 +3,6 @@
 
 // --- FEM Includes ---
 #include "packages/utilities/inc/AttributeContainer.hpp"
-#include <bits/utility.h>
 
 
 namespace cie::fem {
