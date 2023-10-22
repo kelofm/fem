@@ -1,0 +1,5 @@
+<map id="fem.discretization.basisfunctions.HierarchicBasisFunctions" name="fem.discretization.basisfunctions.HierarchicBasisFunctions">
+<area shape="rect" id="node1" title="Legendre polynomials with the constant function replaced by a linear one (using the numpy implementat..." alt="" coords="5,417,248,524"/>
+<area shape="rect" id="node2" href="$classfem_1_1discretization_1_1basisfunctions_1_1PolynomialBasisFunctions.html" title="1D polynomial basis function abstract base class" alt="" coords="5,277,248,369"/>
+<area shape="rect" id="node3" href="$classfem_1_1discretization_1_1basisfunctions_1_1BasisFunctions.html" title="Abstract base class for a matching collection of 1D basis functions." alt="" coords="5,5,248,229"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classobject.html" title=" " alt="" coords="5,242,68,269"/>
+<area shape="rect" id="node2" href="$classoptcontrol_1_1autograd__parabolic_1_1parabolicProblem.html" title=" " alt="" coords="136,5,343,47"/>
+<area shape="rect" id="node3" href="$classoptcontrol_1_1numeric_1_1basisfunctions_1_1GridTensorProduct.html" title=" " alt="" coords="116,71,363,112"/>
+<area shape="rect" id="node4" href="$classoptcontrol_1_1numeric_1_1basisfunctions_1_1IntegratedLegendre.html" title="Integrated legendre basis functions." alt="" coords="116,136,363,177"/>
+<area shape="rect" id="node5" href="$classoptcontrol_1_1numeric_1_1basisfunctions_1_1Lagrange.html" title="Lagrange basis functions." alt="" coords="116,201,363,243"/>
+<area shape="rect" id="node6" href="$classoptcontrol_1_1numeric_1_1functors_1_1FunctorBinaryOperation.html" title=" " alt="" coords="136,267,343,308"/>
+<area shape="rect" id="node7" href="$classoptcontrol_1_1numeric_1_1functors_1_1FunctorUnaryOperation.html" title=" " alt="" coords="136,332,343,373"/>
+<area shape="rect" id="node8" href="$classoptcontrol_1_1numeric_1_1integration_1_1IntegrationPointProvider.html" title=" " alt="" coords="127,397,351,439"/>
+<area shape="rect" id="node9" href="$classoptcontrol_1_1plotter_1_1plotter.html" title=" " alt="" coords="149,463,330,490"/>
+</map>

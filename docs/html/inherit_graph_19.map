@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$structcie_1_1fem_1_1maths_1_1ExpressionTraits.html" title=" " alt="" coords="5,461,208,502"/>
+<area shape="rect" id="node2" href="$structcie_1_1fem_1_1maths_1_1DynamicExpression.html" title=" " alt="" coords="288,5,479,61"/>
+<area shape="rect" id="node4" href="$classcie_1_1fem_1_1maths_1_1AffineTransform.html" title="Class representing an affine transformation." alt="" coords="266,86,501,127"/>
+<area shape="rect" id="node5" href="$classcie_1_1fem_1_1maths_1_1AffineTransformDerivative.html" title="Expression representing the derivative of AffineTransform." alt="" coords="262,151,505,193"/>
+<area shape="rect" id="node6" href="$structcie_1_1fem_1_1maths_1_1DynamicExpression.html" title=" " alt="" coords="288,217,479,258"/>
+<area shape="rect" id="node7" href="$classcie_1_1fem_1_1maths_1_1IdentityTransform.html" title=" " alt="" coords="264,282,503,323"/>
+<area shape="rect" id="node8" href="$classcie_1_1fem_1_1maths_1_1LambdaExpression.html" title=" " alt="" coords="256,347,511,389"/>
+<area shape="rect" id="node9" href="$classcie_1_1fem_1_1maths_1_1OrthogonalScaleTransform.html" title="Class representing independent scaling along orthogonal coordinate axes." alt="" coords="281,413,485,469"/>
+<area shape="rect" id="node10" href="$classcie_1_1fem_1_1maths_1_1OrthogonalScaleTransformDerivative.html" title=" " alt="" coords="281,493,485,549"/>
+<area shape="rect" id="node11" href="$classcie_1_1fem_1_1maths_1_1Polynomial.html" title="Expression representing a scalar polynomial." alt="" coords="281,574,486,615"/>
+<area shape="rect" id="node13" href="$classcie_1_1fem_1_1maths_1_1ProjectiveTransform.html" title="Class representing a projective transform." alt="" coords="264,639,503,681"/>
+<area shape="rect" id="node14" href="$classcie_1_1fem_1_1maths_1_1ProjectiveTransformDerivative.html" title="Expression representing the derivative of ProjectiveTransform." alt="" coords="274,705,493,761"/>
+<area shape="rect" id="node15" href="$classcie_1_1fem_1_1maths_1_1ScaleTranslateTransform.html" title="Class representing independent scaling along orthogonal coordinate axes, followed by a translation." alt="" coords="264,786,503,827"/>
+<area shape="rect" id="node16" href="$classcie_1_1fem_1_1maths_1_1ScaleTranslateTransformDerivative.html" title=" " alt="" coords="270,852,497,908"/>
+<area shape="rect" id="node17" href="$classcie_1_1fem_1_1maths_1_1TranslateScaleTransform.html" title="Class representing a translation followed by an independent scaling along orthogonal coordinate axes." alt="" coords="288,932,479,988"/>
+<area shape="rect" id="node3" href="$classcie_1_1fem_1_1maths_1_1WrappedExpression.html" title=" " alt="" coords="559,13,761,54"/>
+<area shape="rect" id="node12" href="$classcie_1_1fem_1_1maths_1_1LagrangePolynomial.html" title=" " alt="" coords="564,574,756,615"/>
+</map>
