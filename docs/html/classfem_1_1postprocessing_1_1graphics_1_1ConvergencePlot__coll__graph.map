@@ -1,0 +1,3 @@
+<map id="fem.postprocessing.graphics.ConvergencePlot" name="fem.postprocessing.graphics.ConvergencePlot">
+<area shape="rect" id="node1" title="Convergence plot that can be updated dynamically." alt="" coords="5,5,219,215"/>
+</map>

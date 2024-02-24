@@ -1,0 +1,4 @@
+<map id="fem.discretization.basisfunctions.PolynomialBasisFunctions" name="fem.discretization.basisfunctions.PolynomialBasisFunctions">
+<area shape="rect" id="node1" title="1D polynomial basis function abstract base class" alt="" coords="5,277,248,369"/>
+<area shape="rect" id="node2" href="$classfem_1_1discretization_1_1basisfunctions_1_1BasisFunctions.html" title="Abstract base class for a matching collection of 1D basis functions." alt="" coords="5,5,248,229"/>
+</map>

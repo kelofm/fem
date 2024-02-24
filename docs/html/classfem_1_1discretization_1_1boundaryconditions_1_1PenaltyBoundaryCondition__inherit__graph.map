@@ -1,0 +1,5 @@
+<map id="fem.discretization.boundaryconditions.PenaltyBoundaryCondition" name="fem.discretization.boundaryconditions.PenaltyBoundaryCondition">
+<area shape="rect" id="node1" title=" " alt="" coords="5,233,281,325"/>
+<area shape="rect" id="node3" href="$classfem_1_1discretization_1_1boundaryconditions_1_1DirichletBoundary.html" title=" " alt="" coords="5,373,281,465"/>
+<area shape="rect" id="node2" href="$classfem_1_1discretization_1_1boundaryconditions_1_1BoundaryCondition.html" title="Boundary condition base class." alt="" coords="5,5,281,185"/>
+</map>

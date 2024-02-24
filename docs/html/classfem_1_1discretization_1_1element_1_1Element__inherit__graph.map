@@ -1,0 +1,6 @@
+<map id="fem.discretization.element.Element" name="fem.discretization.element.Element">
+<area shape="rect" id="node1" title="Element base class." alt="" coords="125,5,328,259"/>
+<area shape="rect" id="node2" href="$classfem_1_1discretization_1_1element_1_1Element1D.html" title=" " alt="" coords="125,307,328,472"/>
+<area shape="rect" id="node3" href="$classfem_1_1discretization_1_1element_1_1LinearHeatElement1D.html" title="Most basic element for the Poisson equation." alt="" coords="5,542,208,707"/>
+<area shape="rect" id="node4" href="$classfem_1_1discretization_1_1element_1_1NonlinearHeatElement1D.html" title="Basic heat element with temperature&#45;dependent coefficients." alt="" coords="233,520,463,729"/>
+</map>

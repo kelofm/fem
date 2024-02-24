@@ -1,0 +1,9 @@
+<map id="kernel.hpp" name="kernel.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="380,5,471,32"/>
+<area shape="rect" id="node2" href="$connectivity_8hpp.html" title=" " alt="" coords="5,80,133,107"/>
+<area shape="rect" id="node4" href="$AffineTransform_8hpp.html" title=" " alt="" coords="158,80,311,107"/>
+<area shape="rect" id="node5" href="$ProjectiveTransform_8hpp.html" title=" " alt="" coords="335,80,515,107"/>
+<area shape="rect" id="node6" href="$Quadrature_8hpp.html" title=" " alt="" coords="540,80,663,107"/>
+<area shape="rect" id="node7" href="$Traits_8hpp.html" title=" " alt="" coords="687,80,772,107"/>
+<area shape="rect" id="node3" href="$Assembler_8hpp.html" title=" " alt="" coords="10,155,129,181"/>
+</map>
