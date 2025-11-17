@@ -4,20 +4,20 @@
 // --- FEM Includes ---
 #include "packages/maths/inc/Polynomial.hpp"
 #include "packages/maths/inc/AnsatzSpace.hpp"
-#include "packages/maths/inc/LinearIsotropicStiffnessIntegrand.hpp"
+#include "packages/integrands/inc/LinearIsotropicStiffnessIntegrand.hpp"
 
 
-namespace cie::fem::maths {
+namespace cie::fem {
 
 
-CIE_TEST_CASE("LinearIsotropicStiffnessIntegrand", "[maths]")
+CIE_TEST_CASE("LinearIsotropicStiffnessIntegrand", "[integrands]")
 {
     CIE_TEST_CASE_INIT("LinearIsotropicStiffnessIntegrand")
     using Scalar = double;
     constexpr unsigned Dimension = 2u;
 
-    using Basis = Polynomial<Scalar>;
-    using Ansatz = AnsatzSpace<Basis,Dimension>;
+    using Basis = maths::Polynomial<Scalar>;
+    using Ansatz = maths::AnsatzSpace<Basis,Dimension>;
 
     // Define a bilinear ansatz space.
     const auto pAnsatzSpace = std::make_shared<Ansatz>(Ansatz::AnsatzSet {
@@ -30,7 +30,7 @@ CIE_TEST_CASE("LinearIsotropicStiffnessIntegrand", "[maths]")
 
     // Construct the integrand without a buffer.
     constexpr Scalar modulus = 10.0;
-    LinearIsotropicStiffnessIntegrand<Ansatz::Derivative> integrand(modulus, pAnsatzDerivatives);
+    LinearIsotropicStiffnessIntegrand<Ansatz::Derivative> integrand(modulus, *pAnsatzDerivatives);
     CIE_TEST_CHECK(integrand.size() == 16);
     CIE_TEST_CHECK(integrand.getMinBufferSize() == 8);
 
@@ -43,9 +43,7 @@ CIE_TEST_CASE("LinearIsotropicStiffnessIntegrand", "[maths]")
         std::fill(dummy.begin(), dummy.end(), 0);
 
         // Attempt to evaluate without setting a buffer.
-        CIE_TEST_CHECK_THROWS(integrand.evaluate(dummy.data(),
-                                                 dummy.data() + dummy.size(),
-                                                 stiffness.data()));
+        CIE_TEST_CHECK_THROWS(integrand.evaluate(dummy, {stiffness.data(), stiffness.data() + stiffness.size()}));
 
         // Attempt to set insufficiently sized buffers.
         CIE_TEST_CHECK_THROWS(integrand.setBuffer({}));
@@ -117,9 +115,7 @@ CIE_TEST_CASE("LinearIsotropicStiffnessIntegrand", "[maths]")
 
     for (const auto& [rSamplePoint, rReference] : references) {
         StaticArray<Scalar,16> result;
-        CIE_TEST_CHECK_NOTHROW(integrand.evaluate(rSamplePoint.data(),
-                                                  rSamplePoint.data() + rSamplePoint.size(),
-                                                  result.data()));
+        CIE_TEST_CHECK_NOTHROW(integrand.evaluate(rSamplePoint, result));
         for (unsigned iComponent=0u; iComponent<rReference.size(); ++iComponent) {
             CIE_TEST_CHECK(result[iComponent] == Approx(modulus * rReference[iComponent]).margin(1e-14));
         } // for iComponent in range(rReference.size())
@@ -127,4 +123,4 @@ CIE_TEST_CASE("LinearIsotropicStiffnessIntegrand", "[maths]")
 }
 
 
-} // namespace cie::fem::maths
+} // namespace cie::fem
